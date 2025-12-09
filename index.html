@@ -193,74 +193,93 @@
       }
     }
 
-    /* -------------------------
-       모바일 / 태블릿 세로 대응
-       ------------------------- */
-    @media (max-width: 768px) {
-      body {
-        align-items: stretch;
-        justify-content: flex-start;
-      }
+  /* -------------------------
+   모바일 / 태블릿 세로 대응 (버튼 세로 2.5배, 가로 1/2)
+   ------------------------- */
+@media (max-width: 768px) {
+  body {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
 
-      .kiosk {
-        max-width: 480px;
-        max-height: none;
-        padding: 32px 16px 40px;
-        margin: 0 auto;
-      }
+  .kiosk {
+    max-width: 480px;
+    padding: 40px 16px;
+    margin: 0 auto;
+  }
 
-      .tip-layout {
-        gap: 24px;
-        align-items: stretch;
-      }
+  .tip-layout {
+    gap: 32px;
+    align-items: center;
+    width: 100%;
+  }
 
-      h1 {
-        font-size: 28px;
-      }
+  h1 {
+    font-size: 28px;
+  }
 
-      .card-wrapper,
-      .buttons-row {
-        flex-direction: column;
-        gap: 16px;
-        width: 100%;
-        max-width: 100%;
-      }
+  /* ======================================
+     메인 15% / 20% / 25% 버튼 레이아웃
+     ====================================== */
+  .card-wrapper,
+  .buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
 
-      .tip-card {
-        min-width: 0;
-        width: 100%;
-        height: 72px;
-        font-size: 24px;
-        border-radius: 16px;
-      }
+  .tip-card {
+    width: 48%;            /* 가로 폭 절반 정도 */
+    height: 180px;         /* 세로 길이 크게 (약 2.5배) */
+    font-size: 28px;
+    border-radius: 18px;
+  }
 
-      .custom-btn {
-        max-width: 100%;
-        width: 100%;
-        height: 64px;
-        font-size: 20px;
-        border-radius: 16px;
-      }
+  /* ======================================
+     Custom 버튼
+     ====================================== */
+  .custom-btn {
+    width: 100%;
+    height: 160px;         /* 세로 충분히 크게 */
+    font-size: 24px;
+    border-radius: 18px;
+  }
 
-      .custom-grid {
-        max-width: 100%;
-        grid-template-columns: repeat(2, 1fr); /* 2열로 크게 */
-        gap: 10px;
-      }
+  /* ======================================
+     커스텀 선택 화면 (5~50%)
+     ====================================== */
+  .custom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 */
+    gap: 14px;
+    width: 100%;
+    margin-top: 24px;
+  }
 
-      .custom-grid button {
-        height: 56px;
-        font-size: 18px;
-      }
+  .custom-grid button {
+    height: 140px;         /* 세로 큰 버튼 */
+    font-size: 24px;
+    border-radius: 18px;
+  }
 
-      .thank-you-big {
-        font-size: 34px;
-      }
+  .secondary-btn {
+    margin-top: 36px;
+    padding: 16px 24px;
+    font-size: 18px;
+    border-radius: 999px;
+  }
 
-      .thank-detail {
-        font-size: 16px;
-      }
-    }
+  .thank-you-big {
+    font-size: 36px;
+  }
+
+  .thank-detail {
+    font-size: 18px;
+  }
+}
+
   </style>
 </head>
 <body>
