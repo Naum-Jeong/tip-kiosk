@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <title>Tip Kiosk Demo</title>
+
+  <!-- 모바일 화면 비율 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- iOS: 홈 화면에서 열 때 최대한 앱처럼 보이게 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0b2758" />
+
   <style>
     * {
       box-sizing: border-box;
@@ -19,7 +28,6 @@
       color: #ffffff;
     }
 
-    /* 카드만 가운데 놓고, 바깥 프레임 느낌은 없앰 */
     .kiosk {
       width: 100%;
       height: 100%;
@@ -29,26 +37,29 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 0 40px;
     }
 
     h1 {
       margin: 0;
       font-size: 40px;
       font-weight: 500;
+      text-align: center;
     }
 
     .subtitle {
       margin-top: 12px;
       font-size: 16px;
       opacity: 0.8;
+      text-align: center;
     }
 
-    /* 메인 화면 전체 레이아웃 */
     .tip-layout {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 40px;
+      width: 100%;
     }
 
     .card-wrapper {
@@ -80,7 +91,6 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35) inset;
     }
 
-    /* 15 / 20 / 25 카드 */
     .tip-card {
       flex: 1;
       min-width: 200px;
@@ -98,7 +108,6 @@
       opacity: 0.92;
     }
 
-    /* 아래 긴 Custom 버튼 – 위 카드들 폭과 맞게 */
     .custom-btn {
       margin-top: 24px;
       width: 100%;
@@ -114,18 +123,17 @@
       opacity: 0.92;
     }
 
-    /* 서브 화면 공통 */
     .screen {
       display: none;
       text-align: center;
       animation: fadeIn 0.18s ease-out;
+      width: 100%;
     }
 
     .screen.active {
       display: block;
     }
 
-    /* 커스텀 퍼센트 화면 */
     .custom-grid {
       margin-top: 32px;
       width: 100%;
@@ -162,7 +170,6 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    /* Thank you 화면 */
     .thank-you-big {
       font-size: 46px;
       font-weight: 600;
@@ -183,6 +190,75 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    /* -------------------------
+       모바일 / 태블릿 세로 대응
+       ------------------------- */
+    @media (max-width: 768px) {
+      body {
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+
+      .kiosk {
+        max-width: 480px;
+        max-height: none;
+        padding: 32px 16px 40px;
+        margin: 0 auto;
+      }
+
+      .tip-layout {
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .card-wrapper,
+      .buttons-row {
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .tip-card {
+        min-width: 0;
+        width: 100%;
+        height: 72px;
+        font-size: 24px;
+        border-radius: 16px;
+      }
+
+      .custom-btn {
+        max-width: 100%;
+        width: 100%;
+        height: 64px;
+        font-size: 20px;
+        border-radius: 16px;
+      }
+
+      .custom-grid {
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr); /* 2열로 크게 */
+        gap: 10px;
+      }
+
+      .custom-grid button {
+        height: 56px;
+        font-size: 18px;
+      }
+
+      .thank-you-big {
+        font-size: 34px;
+      }
+
+      .thank-detail {
+        font-size: 16px;
       }
     }
   </style>
